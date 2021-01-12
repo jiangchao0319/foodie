@@ -1,17 +1,11 @@
 package com.imooc.pojo;
 
-import java.util.Date;
-
 public class Users {
     private Integer userid;
 
-    private String createdBy;
+    private String name;
 
-    private Date createdTime;
-
-    private String updatedBy;
-
-    private Date updatedTime;
+    private Integer age;
 
     public Integer getUserid() {
         return userid;
@@ -21,35 +15,19 @@ public class Users {
         this.userid = userid;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
+    public String getName() {
+        return name;
     }
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy == null ? null : createdBy.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public Date getCreatedTime() {
-        return createdTime;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy == null ? null : updatedBy.trim();
-    }
-
-    public Date getUpdatedTime() {
-        return updatedTime;
-    }
-
-    public void setUpdatedTime(Date updatedTime) {
-        this.updatedTime = updatedTime;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

@@ -7,8 +7,8 @@ spring:
   datasource:         # 数据源的相关配置
       type: com.zaxxer.hikari.HikariDataSource # 数据源类型：HikariCP
       driver-class-name: com.mysql.jdbc.Driver # mysql驱动
-      url: jdbc:mysql://10.45.67.192:2225/testabc?useUnicode=true&characterEncoding=UTF-8&autoReconnect
-      username: ynzw
+      url: jdbc:mysql://10.45.67.192:2225/testabc?useUnicode=true&characterEncoding=UTF-8&autoReconnect&useSSL=false
+      username: root
       password: zsmartcity
   hikari:
       connection-timeout: 30000 # 等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQ
@@ -38,3 +38,4 @@ server:
   tomcat:
     uri-encoding: UTF-8
   max-http-header-size: 80KB
+
