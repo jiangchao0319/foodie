@@ -38,4 +38,32 @@ public class UserServiceImpl implements UserService {
     public Users getUserById(int userId) {
         return usersMapper.selectByPrimaryKey(userId);
     }
+
+    public void saveParent() {
+        Users users = new Users();
+        users.setName("parent");
+        users.setAge(19);
+        usersMapper.insert(users);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void saveChild() {
+        saveChild1();
+        int a = 1 / 0;
+        saveChild2();
+    }
+
+    public void saveChild1() {
+        Users users = new Users();
+        users.setName("child-1");
+        users.setAge(20);
+        usersMapper.insert(users);
+    }
+
+    public void saveChild2() {
+        Users users = new Users();
+        users.setName("child-2");
+        users.setAge(21);
+        usersMapper.insert(users);
+    }
 }
