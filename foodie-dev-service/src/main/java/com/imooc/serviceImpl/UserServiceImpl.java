@@ -1,69 +1,65 @@
 package com.imooc.serviceImpl;
 
+import com.imooc.enums.Sex;
 import com.imooc.mapper.UsersMapper;
 import com.imooc.pojo.Users;
-import com.imooc.service.UserService;
+import com.imooc.service.UsersService;
+import com.imooc.utils.DateUtil;
+import com.imooc.utils.MD5Utils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
-@Service("userService")
-public class UserServiceImpl implements UserService {
+@Service("UsersService")
+public class UserServiceImpl implements UsersService {
 
     @Resource
     UsersMapper usersMapper;
 
-    @Transactional(propagation = Propagation.REQUIRED)
-    @Override
-    public void insertUser(Users users) {
-        usersMapper.insert(users);
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED)
-    @Override
-    public void delUserById(int userId) {
-        usersMapper.deleteByPrimaryKey(userId);
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED)
-    @Override
-    public void updateUser(Users users) {
-        usersMapper.updateByPrimaryKey(users);
-    }
-
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
-    public Users getUserById(int userId) {
-        return usersMapper.selectByPrimaryKey(userId);
+    public Users selectById(String id) {
+        return usersMapper.selectByPrimaryKey(id);
     }
 
-    public void saveParent() {
-        Users users = new Users();
-        users.setName("parent");
-        users.setAge(19);
-        usersMapper.insert(users);
+    @Override
+    public void insertUser(Users user) {
+
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void saveChild() {
-        saveChild1();
-        int a = 1 / 0;
-        saveChild2();
+    @Override
+    public void deleteById(String id) {
+
     }
 
-    public void saveChild1() {
-        Users users = new Users();
-        users.setName("child-1");
-        users.setAge(20);
-        usersMapper.insert(users);
+    @Override
+    public Boolean queryUserNameIsExist(String userName) {
+        Users users = usersMapper.selectUserByName(userName);
+        if(users != null){
+            return true;
+        }
+        return false;
     }
 
-    public void saveChild2() {
-        Users users = new Users();
-        users.setName("child-2");
-        users.setAge(21);
-        usersMapper.insert(users);
+    @Override
+    public Users Register(Users users) {
+        String username = users.getUsername();
+        try {
+            String password = MD5Utils.getMD5Str(users.getPassword());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String nickname = users.getNickname();
+        String realname = users.getRealname();
+        String mobile = users.getMobile();
+        String email = users.getEmail();
+//        int sex = Sex.secret.type;
+        Date birthday = DateUtil.stringToDate("1992-03-19", "YYYY-MM-DD");
+        Date createdata = new Date();
+        Date updatedata = new Date();
+        return null;
     }
 }

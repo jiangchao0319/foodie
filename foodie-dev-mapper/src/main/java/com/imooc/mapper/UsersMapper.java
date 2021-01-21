@@ -2,16 +2,19 @@ package com.imooc.mapper;
 
 import com.imooc.pojo.Users;
 
+
 public interface UsersMapper {
-    int deleteByPrimaryKey(Integer userid);
+    int deleteByPrimaryKey(String id);
 
     int insert(Users record);
 
     int insertSelective(Users record);
 
-    Users selectByPrimaryKey(Integer userid);
+    Users selectByPrimaryKey(String id);
 
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+
+    Users selectUserByName(String userName);
 }
