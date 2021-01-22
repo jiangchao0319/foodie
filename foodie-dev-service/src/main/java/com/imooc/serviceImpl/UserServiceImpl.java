@@ -45,21 +45,7 @@ public class UserServiceImpl implements UsersService {
     }
 
     @Override
-    public Users Register(Users users) {
-        String username = users.getUsername();
-        try {
-            String password = MD5Utils.getMD5Str(users.getPassword());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String nickname = users.getNickname();
-        String realname = users.getRealname();
-        String mobile = users.getMobile();
-        String email = users.getEmail();
-//        int sex = Sex.secret.type;
-        Date birthday = DateUtil.stringToDate("1992-03-19", "YYYY-MM-DD");
-        Date createdata = new Date();
-        Date updatedata = new Date();
-        return null;
+    public int register(Users users) {
+        return usersMapper.insert(users);
     }
 }

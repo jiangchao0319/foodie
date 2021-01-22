@@ -18,5 +18,5 @@ public interface UsersService {
     /*
     * 注册
     * */
-    Users Register(Users users);
+    int register(Users users);
 }
