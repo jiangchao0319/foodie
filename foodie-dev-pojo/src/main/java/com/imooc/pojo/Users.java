@@ -1,10 +1,16 @@
 package com.imooc.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
+@ApiModel(value = "用户BO", description = "用户输入")
 public class Users {
+    @ApiModelProperty(value = "用户id", name = "id", example = "123", required = true)
     private String id;
 
+    @ApiModelProperty(value = "用户名称", name = "name", required = true )
     private String username;
 
     private String password;
@@ -13,6 +19,7 @@ public class Users {
 
     private String realname;
 
+    @ApiModelProperty(value = "手机号", name = "mobile", required = false)
     private String mobile;
 
     private String email;
